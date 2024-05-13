@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            display: flex;
+            margin: 0;
+            flex-direction: column;
+            padding: 0;
+        }
+
+        .footer {
+            display: flex;
+            /* align-self: flex-end; */
+            background-color: rgb(71, 207, 245);
+            padding: 20px;
+            flex-grow: 1;
+            flex-wrap: wrap;
+            flex-direction: row;
+            justify-content: space-evenly;
+            width: 100%;
+            max-height: fit-content;
+        }
+
+        input {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid black;
+            width: 100%;
+        }
+
+        button {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid black;
+            width: 110%;
+            background-color: green;
+            color: white;
+            cursor: pointer;
+        }
+
+        .education {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+        }
+
+        .edu-contents {
+            height: 180px;
+            width: 180px;
+            /* min min-width: 180px; */
+            background-color: rgb(14, 53, 53);
+            color: white;
+            border-radius: 20px;
+            padding: 30px;
+            display: flex;
+            margin: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="education" id="edu">
+
+    </div>
+
+    </div>
+    <div class="footer">
+        <div style="display: flex; flex-direction: column;">
+            <h1>Prinkal Doshi</h1>
+            <a href=" mailto: prinkaldoshi@gmail.com" style="color: black; text-decoration: none;"> <b>Email : </b>
+                prinkaldoshi@gmail.com
+                </href> </a><br><br>
+            <a href="https://linkedin.com/in/prinkaldoshi" style="color: black; text-decoration: none;"> <b>Linkedin
+                    : </b>
+                prinakldoshi
+                </href></a><br><br>
+        </div>
+        <div id="myform" style="display: flex; flex-direction: column; margin-right: 10px;">
+            <form onsubmit="onReg()">
+                <b>Name : </b><input type="text" name="name" id="name" required><br><br>
+                <b>Email : </b><input type="email" name="email" id="email" required><br><br>
+                <b>Message : </b><input type="text" name="msg" id="msg" required><br><br>
+                <button type="submit">
+                    Submit
+                </button>
+            </form>
+        </div>
+
+    </div>
+    <script>
+        onReg = () => {
+            let name = document.getElementById('name').value;
+            let email = document.getElementById('email').value;
+            let msg = document.getElementById('msg').value;
+            if (name === '' || email == '') {
+                alert('Please Fill Name & Email Fields ');
+                return false;
+            } else {
+                document.getElementById('myform').innerText = 'Thanks for your response ' + name + ' we will contact you soon';
+            }
+        }
+        var education = ["Infant Jesus School", "Diploma in Information Technology", "BTech in Computer Science"];
+        var edu = document.getElementById('edu');
+        education.forEach(element => {
+            var eduCon = document.createElement('div');
+            eduCon.classList.add('edu-contents');
+            eduCon.textContent = element;
+            edu.appendChild(eduCon);
+        });
+    </script>
+</body>
+
+</html>

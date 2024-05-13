@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Quiz</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<style>
+    body {
+        margin: 0px;
+        padding: 0px;
+        font-family: arial, sans-serif;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 20px;
+        padding: 20px;
+        height: 80vh;
+    }
+
+    .container-items {
+        background-color: cyan;
+        border-radius: 20px;
+        justify-content: center;
+        align-items: center;
+        height: fit-content;
+        display: flex;
+        margin: 20px;
+        padding: 20px;
+        flex-direction: column;
+        width: 400px;
+    }
+
+    .button {
+        background-color: green;
+        color: white;
+        padding: 10px;
+        min-width: 30%;
+        border-radius: 10px;
+        border: 1px solid green;
+        cursor: pointer;
+    }
+
+    .button:hover {
+        background-color: darkgreen;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="container-items" id="question-form-container">
+            <div id="questionText">
+                <form onsubmit="next(event)">
+
+                    <h1 style="display: flex;  justify-content: center; align-items: center; margin-top: 20px;">VIBGYOR
+                        stands for ?</h1>
+                    <div style="margin: 10px;"> <input type="radio" name="question1" value="wrong">Violet,
+                        Indigo, Black, Green, Yellow, Orange, Red<br>
+                    </div>
+                    <div style="margin: 10px;"><input type="radio" name="question1" value="correct">Violet,
+                        Indigo, Blue, Green, Yellow, Orange, Red<br>
+                    </div>
+                    <div style="margin: 10px;"><input type="radio" name="question1" value="wrong">Violet,
+                        Indigo, Blue, Grass, Yellow, Orange, Red<br>
+                    </div>
+
+
+                    <div style="display: flex; justify-content: center; align-items: center; margin-top: 20px;">
+                        <button class="button">Next</button>
+                    </div>
+            </div>
+            </form>
+        </div>
+    </div>
+</body>
+<script>
+    let total = 0;
+    const next = (event) => {
+        event.preventDefault();
+        const ans1 = document.querySelector('input[name="question1"]:checked');
+        if (!ans1) {
+            alert('Please select an answer');
+        } else {
+            const answer1 = ans1.value;
+            if (answer1 === 'correct') {
+                total += 1;
+            }
+            document.getElementById("question-form-container").innerHTML = `
+               <form onsubmit="next2(event)">
+
+                <h1 style="display: flex;  justify-content: center; align-items: center; margin-top: 20px;">1+1?</h1>
+                <div style="margin: 10px;"> <input type="radio" name="question2" value="correct">2<br>
+                </div>
+                <div style="margin: 10px;"><input type="radio" name="question2" value="wrong">4<br>
+                </div>
+                <div style="margin: 10px;"><input type="radio" name="question2" value="wrong">5<br>
+                </div>
+
+                <div style="display: flex; justify-content: center; align-items: center; margin-top: 20px;">
+                    <button class="button">Next</button>
+                </div>
+                
+            </form>
+
+                `;
+
+            console.log(total);
+        }
+    }
+    const next2 = (event) => {
+        event.preventDefault();
+        const ans2 = document.querySelector('input[name="question2"]:checked');
+        if (ans2 === null) {
+            alert('Please select an answer');
+        } else {
+            const answer2 = ans2.value;
+            if (answer2 === 'correct') {
+                total += 1;
+            }
+            document.getElementById('question-form-container').innerHTML = `
+            <form onsubmit="next3(event)">
+                <h1 style="display: flex; justify-content: center; align-items: center; margin-top: 20px;">9+1?</h1>
+                <div style="margin: 10px;"><input type="radio" name="question3" value="wrong">80<br></div>
+                <div style="margin: 10px;"><input type="radio" name="question3" value="correct">10<br></div>
+                <div style="margin: 10px;"><input type="radio" name="question3" value="wrong">5<br></div>
+                <div style="display: flex; justify-content: center; align-items: center; margin-top: 20px;">
+                    <button class="button">Next</button>
+                </div>
+            </form>
+        `;
+        }
+    }
+
+    const next3 = (event) => {
+        event.preventDefault();
+        const ans3 = document.querySelector('input[name="question3"]:checked');
+        if (ans3 === null) {
+            alert('Please select an answer');
+        } else {
+            const answer3 = ans3.value;
+            if (answer3 === 'correct') {
+                total += 1;
+            }
+            document.getElementById('question-form-container').innerText = "Your Score is " + total;
+        }
+    }
+</script>
+
+</html>

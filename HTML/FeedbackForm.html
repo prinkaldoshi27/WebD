@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Form</title>
+</head>
+<style>
+    body {
+        margin: 0px;
+        padding: 0px;
+        font-family: Arial, sans-serif;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .container-items {
+        display: flex;
+        background-color: cyan;
+        border-radius: 20px;
+        padding: 50px;
+        flex-direction: column;
+        height: fit-content;
+        justify-content: center;
+        align-items: center;
+        width: fit-content;
+        /* margin: 20px; */
+    }
+
+    .button {
+        background-color: green;
+        color: white;
+        padding: 10px;
+        width: 30%;
+        border-radius: 10px;
+        border: 1px solid green;
+        cursor: pointer;
+    }
+
+    .button:hover {
+        background-color: darkgreen;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="container-items">
+            <form onsubmit="onSub(event)">
+                <div style="font-size: large; padding: 0px; margin: 0px;"> <b>How satisfied are you with our service ?
+                </div></b><br>
+                <input type="radio" name="question1" id="verysatisfy" value="Very Satisfied">Very Satisfied
+                <input type="radio" name="question1" id="satisfy" value="Satisfied">Satisfied
+                <input type="radio" name="question1" id="neutral" value="Neutral">Neutral
+                <input type="radio" name="question1" id="dissatisfy" value="Dissatisfied">Dissatisfied
+                <input type="radio" name="question1" id="verydissatisfy" value="Very Dissatisfied">Very Dissatisfied
+
+                <br><br>
+                <div style="border: 1px solid black; "></div>
+                <br><br>
+
+                <div style="font-size: large; padding: 0px; margin: 0px;"> <b> How likely are you to recommend us to
+                        others ?</b><br><br></div>
+                <input type="radio" name="question2" id="verylikely" value="Very Likely">Very Likely
+                <input type="radio" name="question2" id="likely" value="Likely">Likely
+                <input type="radio" name="question2" id="neutral2" value="Neutral">Neutral
+                <input type="radio" name="question2" id="unlikely" value="Unlikely">Unlikely
+                <input type="radio" name="question2" id="veryunlikely" value="Very Unlikely">Very Unlikely
+
+
+                <br><br>
+                <div style="border: 1px solid black; "></div>
+                <br><br>
+
+                <div style="font-size: large; padding: 0px; margin: 0px;"> <b>Which features do you like the
+                        most?</b><br><br></div>
+                <input type="checkbox" name="feature" id="feature1" value="Feature 1">Feature 1
+                <input type="checkbox" name="feature" id="feature2" value="Feature 2">Feature 2
+                <input type="checkbox" name="feature" id="feature3" value="Feature 3">Feature 3
+                <input type="checkbox" name="feature" id="feature4" value="Feature 4">Feature 4
+                <input type="checkbox" name="feature" id="feature5" value="Feature 5">Feature 5
+
+                <br><br>
+                <div style="border: 1px solid black; "></div>
+                <br><br>
+
+                <div style="font-size: large; padding: 0px; margin: 0px;"> <b> Any recommendation / suggestions ?
+                    </b><br><br> </div>
+
+                <textarea name="recommendation" cols="70" rows="5" id="recommendation"></textarea>
+
+                <div
+                    style="display: flex; margin-top : 15px;justify-content: center; align-items: center; flex-direction: column;">
+                    <button type="submit" class="button">Submit</button>
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+
+    <script>
+        const onSub = (event) => {
+            event.preventDefault();
+            const question1 = document.querySelector('input[name="question1"]:checked');
+            const question2 = document.querySelector('input[name="question2"]:checked');
+            const features = document.querySelectorAll('input[name="feature"]:checked');
+            const recommendation = document.getElementById('recommendation').value;
+            if (!question1 || !question2) {
+                alert("Please full all the questions.");
+            } else {
+                q1 = question1.value;
+                q2 = question2.value;
+                let featuresList = [];
+                features.forEach((feature) => {
+                    featuresList.push(feature.value);
+                });
+                document.getElementsByClassName('container-items')[0].innerHTML = "Your Response <br> Question 1 : " + q1 + "<br> Question 2 : " + q2 + "<br> Recommendation : " + recommendation + "<br> Features : " + featuresList.join(", ") + "<br> Thank you for your feedback.";
+            }
+            return false;
+        }
+    </script>
+</body>
+
+</html>

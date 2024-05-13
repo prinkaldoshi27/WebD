@@ -1,0 +1,94 @@
+<!-- Implement client-side form validation using JavaScript. Validate form (Create registration form to register for any
+college even) fields as the user inputs and show the registration details in response once user will register
+successfully. -->
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    .buttonStyle {
+        background-color: green;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+
+    }
+
+    .buttonStyle:hover {
+        background-color: darkgreen;
+    }
+
+    .registerationContainer {
+        background-color: cyan;
+        margin: 20px;
+        padding: 20px;
+        border-radius: 20px;
+        width: 30%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    input {
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid black;
+        width: 100%;
+    }
+</style>
+
+<body>
+    <div style="display: flex; justify-content: center; align-items: center ;">
+        <div class="registerationContainer">
+
+            <form onsubmit="return onRegister()"
+                style="display: flex; flex-direction: column;  display: flex; justify-content: center; align-items: left; ">
+                <h1>Registration Form</h1>
+                <div style="padding-top: 20px;"> Name : </div>
+                <div style="padding-top: 10px;"> <input type="text" name="name" /> </div>
+
+                <div style="padding-top: 20px;"> Phone Number : </div>
+                <div style="padding-top: 10px;"> <input type="number" name="phone" /></div>
+
+                <div style="padding-top: 20px;"> Email : </div>
+                <div style="padding-top: 10px;"> <input type="email" name="email" /></div>
+
+                <div style="padding-top: 20px;"> Password : </div>
+                <div style="padding-top: 10px;"> <input type="password" name="password" /></div>
+
+                <div
+                    style=" display: flex; padding-top: 20px; width: 100%; justify-content: center; align-items: center; ">
+                    <button type="submit" class="buttonStyle">Register</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        onRegister = () => {
+            let name = document.getElementsByName('name')[0].value;
+            let phone = document.getElementsByName('phone')[0].value;
+            let email = document.getElementsByName('email')[0].value;
+            let password = document.getElementsByName('password')[0].value;
+            if (name === '' || phone === '' || email === '' || password === '') {
+                alert('Please fill all the fields');
+                return false;
+            } else if (phone.length !== 10) {
+                alert('Phone Numers should be of 10 digits');
+                return false;
+            } else if (password.length < 8) {
+                alert('Password should be of atleast 8 characters');
+                return false;
+            }
+            else {
+                clas = document.getElementsByClassName('registerationContainer')[0];
+                clas.innerHTML = 'Name : ' + name + "<br>Phone : " + phone + "<br>Email : " + email;
+            }
+        }
+    </script>
+</body>
+
+</html>

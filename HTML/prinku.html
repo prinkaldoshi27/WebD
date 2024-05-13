@@ -1,0 +1,28 @@
+<html>
+
+<body>
+    <div id="textarea">
+        <form onsubmit="hi(event)">
+            name<input type="text" id="name">
+            email<input type="email" id="email">
+            <button type="submit">show</button>
+        </form>
+    </div>
+    <script>
+        const hi = (event) => {
+            event.preventDefault();
+            let name = document.getElementById('name').value;
+            let email = document.getElementById('email').value;
+            if (!email || !name) {
+                alert("Please fill all details")
+            } else {
+                document.getElementById('textarea').innerHTML = `
+                    <h1>${name}</h1>
+                    <h1>${email}</h1>
+                    `
+            }
+        }
+    </script>
+</body>
+
+</html>

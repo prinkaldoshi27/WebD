@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Calculator</title>
+    <meta name="viewport" content="width=device-width" , initial-scale="1.0">
+</head>
+<style>
+    body {
+        font-family: arial, sans-serif;
+        margin: 0px;
+        font-size: larger;
+        padding: 0px;
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        flex-direction: column;
+    }
+
+    .container-items {
+        background-color: black;
+        border-radius: 20px;
+        padding: 20px;
+        margin: 20px;
+        flex-direction: column;
+        display: flex;
+        height: fit-content;
+        width: fit-content;
+    }
+
+    button {
+        width: 50px;
+        height: 50px;
+        border-radius: 10px;
+        background-color: rgb(240, 237, 237);
+        color: BLACK;
+        margin: 3px;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="container-items">
+            <div style="margin-bottom: 5px; display: flex;">
+                <textarea id="textarea" rows="4" cols="21"
+                    style="resize: none; border-radius: 10px; font-size: larger;"></textarea>
+            </div>
+            <div>
+
+                <button onclick="appendtotextbox('%')">%</button>
+                <button onclick="appendtotextbox('/')">/</button>
+                <button onclick="clearscreen()">CE</button>
+                <button onclick="back()">!</button>
+            </div>
+            <div>
+
+                <button onclick="appendtotextbox('7')">7</button>
+                <button onclick="appendtotextbox('8')">8</button>
+                <button onclick="appendtotextbox('9')">9</button>
+                <button onclick="appendtotextbox('*')"><b>*</b></button>
+            </div>
+            <div>
+
+                <button onclick="appendtotextbox('4')">4</button>
+                <button onclick="appendtotextbox('5')">5</button>
+                <button onclick="appendtotextbox('6')">6</button>
+                <button onclick="appendtotextbox('-')"><b>-</b></button>
+            </div>
+            <div>
+
+                <button onclick="appendtotextbox('1')">1</button>
+                <button onclick="appendtotextbox('2')">2</button>
+                <button onclick="appendtotextbox('3')">3</button>
+                <button onclick="appendtotextbox('+')">+</button>
+            </div>
+            <div>
+
+                <button onclick="appendtotextbox('00')">00</button>
+                <button onclick="appendtotextbox('0')">0</button>
+                <button onclick="appendtotextbox('.')"><b>.</b></button>
+                <button onclick="result()">=</button>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        appendtotextbox = (value) => {
+            document.getElementById('textarea').value += value;
+        }
+        clearscreen = () => {
+            document.getElementById('textarea').value = '';
+        }
+        back = () => {
+            let value = document.getElementById('textarea').value;
+            document.getElementById('textarea').value = value.slice(0, -1);
+        }
+        result = () => {
+            let value = document.getElementById('textarea').value;
+            document.getElementById('textarea').value = eval(value);
+        }
+    </script>
+</body>
+
+</html>
